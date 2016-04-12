@@ -119,7 +119,12 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libshim_ims-camera \
     sensors.hal.tof \
+    libop2_cam \
     SnapdragonCamera
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
