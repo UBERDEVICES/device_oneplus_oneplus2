@@ -27,8 +27,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
         $(PRODUCT_PACKAGE_OVERLAYS)
 
-# Listen configuration file 
--include $(TOPDIR)hardware/qcom/audio/configs/msm8994/msm8994.mk 
+-include $(TOPDIR)hardware/qcom/audio/configs/msm8994/msm8994.mk
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence
