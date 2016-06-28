@@ -22,16 +22,15 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true
 
-# Audio configuration file
--include $(TOPDIR)hardware/qcom/audio/configs/msm8994/msm8994.mk
-
 #QTIC flag 
 -include $(QCPATH)/common/config/qtic-config.mk 
 
 PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
         $(PRODUCT_PACKAGE_OVERLAYS)
 
-# Audio
+# Listen configuration file 
+-include $(TOPDIR)hardware/qcom/audio/configs/msm8994/msm8994.mk 
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence
 
