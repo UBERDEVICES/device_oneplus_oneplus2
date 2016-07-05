@@ -18,6 +18,8 @@ $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
 # Enable features in video HAL that can compile only on this platform
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Audio configuration file
