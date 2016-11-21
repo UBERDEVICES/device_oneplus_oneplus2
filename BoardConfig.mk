@@ -128,6 +128,8 @@ ENABLE_CPUSETS := true
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
 
+BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
+
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
@@ -154,6 +156,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_oneplus2
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+TARGET_LIBINIT_DEFINES_FILE := $(PLATFORM_PATH)/init/init_oneplus2.cpp
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -188,6 +191,7 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
+TARGET_USES_IMS := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
