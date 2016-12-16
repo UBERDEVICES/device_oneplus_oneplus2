@@ -59,7 +59,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 TARGET_CPU_CORTEX_A53 := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -128,6 +128,7 @@ ENABLE_CPUSETS := true
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
 
 BOARD_EGL_CFG := $(PLATFORM_PATH)/egl.cfg
+BOARD_SECCOMP_POLICY := $(PLATFORM_PATH)/seccomp
 
 # GPS
 TARGET_NO_RPC := true
@@ -139,7 +140,7 @@ TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_C2D_COMPOSITION := true
 USE_OPENGL_RENDERER := true
-TARGET_USES_OVERLAY := true 
+TARGET_USES_OVERLAY := true
 MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -191,7 +192,7 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
-TARGET_USES_IMS := true 
+TARGET_USES_IMS := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
