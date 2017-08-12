@@ -126,6 +126,10 @@ ENABLE_CPUSETS := true
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
 
+# FM
+BOARD_HAVE_QCOM_FM := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 BOARD_EGL_CFG := $(PLATFORM_PATH)/egl.cfg
 
 # GPS
