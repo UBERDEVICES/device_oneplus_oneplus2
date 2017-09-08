@@ -121,6 +121,7 @@ BT += libattrib_static
 BT += hcidump.sh
 BT += libbt-vendor
 BT += libbthost_if
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/oneplus2/bluetooth
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
@@ -141,7 +142,7 @@ CURL := libcurl
 CURL += curl
 
 #CM
-CM := CMFileManager
+#CM := CMFileManager
 #CM += Trebuchet
 
 #Default Launcher
