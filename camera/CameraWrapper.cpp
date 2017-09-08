@@ -29,7 +29,7 @@
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
 #include <utils/threads.h>
-#include <sensor/SensorManager.h>
+#include <gui/SensorManager.h>
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
