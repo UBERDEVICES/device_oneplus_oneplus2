@@ -254,7 +254,9 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libxml2
+    libxml2 \
+    libcnefeatureconfig \
+    libprotobuf-cpp-full
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -263,6 +265,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
+
+PRODUCT_PACKAGES += tcmiface
+PRODUCT_PACKAGES += telephony-ext
 
 # USB
 PRODUCT_PACKAGES += \
