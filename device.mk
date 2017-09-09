@@ -16,6 +16,7 @@
 
 $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
+# Enable features in video HAL that can compile only on this platform
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 
@@ -144,16 +145,13 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # Fingerprint sensor
-PRODUCT_PACKAGES += \
-    fingerprintd
+PRODUCT_PACKAGES += fingerprintd
     
 # FM
-PRODUCT_PACKAGES += \
-    libfmjni
+PRODUCT_PACKAGES += libfmjni
 
 # For android_filesystem_config.h
-PRODUCT_PACKAGES += \
-    fs_config_files
+PRODUCT_PACKAGES += fs_config_files
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -185,18 +183,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
 # Lights
-PRODUCT_PACKAGES += \
-    lights.msm8994
+PRODUCT_PACKAGES += lights.msm8994
 
 # LiveDisplay native
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
+PRODUCT_PACKAGES += libjni_livedisplay
 
 # Media 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
- 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
@@ -223,14 +218,7 @@ PRODUCT_PACKAGES += \
     libstagefright_soft_flacdec
 
 # Power
-PRODUCT_PACKAGES += \
-    power.msm8994
-
-# QCOM
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
-# Enable features in video HAL that can compile only on this platform
-TARGET_USES_MEDIA_EXTENSIONS := true
+PRODUCT_PACKAGES += power.msm8994
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -258,8 +246,7 @@ PRODUCT_PACKAGES += \
     sensors.msm8994 \
     sensors.ssc.wrapper
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
 
 PRODUCT_PACKAGES += tcmiface
 PRODUCT_PACKAGES += telephony-ext
@@ -269,8 +256,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # VR
-PRODUCT_PACKAGES += \
-    vr.msm8994
+PRODUCT_PACKAGES += vr.msm8994
 
 # MIDI feature
 PRODUCT_COPY_FILES += \

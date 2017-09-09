@@ -27,8 +27,13 @@ PLATFORM_PATH := device/oneplus/oneplus2
 
 BOARD_VENDOR := OnePlus
 
+-include $(QCPATH)/common/msm8994/BoardConfigVendor.mk
+
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
+
+#Clang
+USE_CLANG_PLATFORM_BUILD := true
 
 # Assertions
 TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
@@ -187,15 +192,7 @@ BOARD_SECCOMP_POLICY := $(PLATFORM_PATH)/seccomp
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
-
-# Enable dexpreopt to speed boot time
-ifeq ($(HOST_OS),linux)
-  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+TARGET_USES_IMS := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -211,7 +208,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-#CONFIG_EAP_PROXY := qmi
 CONFIG_EAP_PROXY_DUAL_SIM := true
 CONFIG_EAP_PROXY_AKA_PRIME := true
 CONFIG_EAP_PROXY_MSM8994_TARGET := true
@@ -230,6 +226,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
+#Selinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
@@ -239,7 +236,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # CM Hardware
 BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/cmhw
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
-
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus2/BoardConfigVendor.mk
