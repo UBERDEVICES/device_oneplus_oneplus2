@@ -23,12 +23,12 @@ $(call inherit-product, device/oneplus/oneplus2/device.mk)
 $(call inherit-product, device/oneplus/oneplus2/base.mk)
 
 # Inherit some common AOSP stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/uber/config/common.mk)
 
 # Inherit from QCOM common
 include device/qcom/common/common.mk
 
-PRODUCT_NAME := aosp_oneplus2
+PRODUCT_NAME := uber_oneplus2
 PRODUCT_DEVICE := oneplus2
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
