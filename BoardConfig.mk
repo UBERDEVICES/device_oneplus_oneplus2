@@ -29,12 +29,6 @@ BOARD_VENDOR := OnePlus
 
 -include $(QCPATH)/common/msm8994/BoardConfigVendor.mk
 
-# Use Snapdragon LLVM, if available
-TARGET_USE_SDCLANG := true
-
-#Clang
-USE_CLANG_PLATFORM_BUILD := true
-
 # Assertions
 TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 
@@ -77,6 +71,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_GCC_VERSION_ARM64 := 4.9
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
@@ -229,10 +224,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
-
-#Selinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
