@@ -57,6 +57,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 TARGET_2ND_CPU_FEATURES := div,atomic_ldrd_strd
 
 TARGET_USES_64_BIT_BINDER := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidboot.selinux=permissive
