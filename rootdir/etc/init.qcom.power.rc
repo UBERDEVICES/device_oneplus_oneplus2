@@ -61,10 +61,6 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 633600
 
-    # Insert core_ctl module and use conservative paremeters
-    insmod /system/lib/modules/hcube.ko
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 1
-
     # Re-enable thermal and BCL hotplug
     write /sys/devices/soc.0/qcom,bcl.62/mode "disable"
     write /sys/devices/soc.0/qcom,bcl.62/hotplug_mask 192
@@ -91,31 +87,33 @@ on enable-low-power
     write /sys/kernel/msm_thermal/sampling_ms 8000
     write /sys/kernel/msm_thermal/enabled 1
 
-    # Configure core_ctl module parameters
+    # Enable core control with custom config
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 95
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 80
+    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 600
+    write /sys/devices/system/cpu/cpu4/core_ctl/online_delay_ms 10000
+    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
     write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 70
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 20
-    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms  100
-    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
-
-    # enable H-Cube tunings for big cores
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_on 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_down_scale_on 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_thres_on 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_ro_use_gourd 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_correl_lvs "0 0 768000 1248000"
-    write /sys/devices/system/cpu/cpu4/core_ctl/hc_correl_use_pcost 1
-
-    # Setting big.LITTLE scheduler parameters
-    write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_small_task 15
-    write /proc/sys/kernel/sched_upmigrate 99
-    write /proc/sys/kernel/sched_downmigrate 85
+    write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
+    write /sys/devices/system/cpu/cpu0/core_ctl/always_online_cpu "1 1 1 1"
+    write /sys/devices/system/cpu/cpu4/core_ctl/always_online_cpu "1 1 0 0"
+ 
+    # Setting B.L scheduler parameters
+    write /proc/sys/kernel/sched_small_task 25
+    write /proc/sys/kernel/sched_upmigrate 95
+    write /proc/sys/kernel/sched_downmigrate 80
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_boost 0
+ 
+    # android background processes are set to nice 10. Never schedule these on the a57s.
+    write /proc/sys/kernel/sched_upmigrate_min_nice 9
+
+    # TheCrazyLex@PA Setup Shadow scheduling
+    write /proc/sys/kernel/sched_use_shadow_scheduling 1
+    write /proc/sys/kernel/sched_shadow_upmigrate 60
+    write /proc/sys/kernel/sched_shadow_downmigrate 30
 
     # Enable rps static configuration
     write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus 8
