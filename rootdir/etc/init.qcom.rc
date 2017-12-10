@@ -485,7 +485,7 @@ on post-fs-data
     chmod 2770 /data/system/perfd
     # Set perfd properties
     setprop ro.min_freq_0 384000
-    setprop ro.min_freq_4 384000
+    setprop ro.min_freq_4 633600
 
     setprop vold.post_fs_data_done 1
 
