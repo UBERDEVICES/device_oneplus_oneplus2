@@ -489,6 +489,14 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    # Set light thermal restrictions while optimizing apps
+    # [throttle_freq_LITTLE, throttle_freq_big, throttle_temp, unthrottle_temp]
+    write /sys/kernel/msm_thermal/zone0 "1555200 1536000 46 44"
+    write /sys/kernel/msm_thermal/zone1 "1555200 1344000 50 47"
+    write /sys/kernel/msm_thermal/zone2 "1344000 960000 55 53"
+    write /sys/kernel/msm_thermal/zone3 "1344000 768000 65 63"
+    write /sys/kernel/msm_thermal/enabled 1
+
 on property:sys.boot_completed=1
     #allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
