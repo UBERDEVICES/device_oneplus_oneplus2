@@ -1,0 +1,17 @@
+[
+  {
+    "repository": "uberdevices/device_oppo_common",
+    "target_path": "device/oppo/common",
+    "branch": "oreo"
+  },
+  {
+    "repository": "uberdevices/kernel_oneplus_msm8994",
+    "target_path": "kernel/oneplus/msm8994",
+    "branch": "oreo"
+  },
+  {
+    "repository": "uberdevices/vendor_oneplus",
+    "target_path": "vendor/oneplus",
+    "branch": "oreo"
+  }
+]
